@@ -17,5 +17,7 @@ namespace WebGameStore.Model
 
         // virtuals...
         public virtual IEnumerable<Comment> Comments { get; set; }
+        public virtual IEnumerable<GameGenre> GameGenres { get; set; }
+        public virtual IEnumerable<GamePlatformType> GamePlatformTypes { get; set; }
     }
 }

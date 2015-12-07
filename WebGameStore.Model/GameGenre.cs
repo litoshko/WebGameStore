@@ -8,5 +8,11 @@ namespace WebGameStore.Model
 {
     public class GameGenre
     {
+        public int Id { get; set; }
+        public string GameKey { get; set; }
+        public string GenreName { get; set; }
+
+        public virtual Game Game { get; set; }
+        public virtual Genre Genre { get; set; }
     }
 }

@@ -13,6 +13,10 @@ namespace WebGameStore
     {
         protected void Application_Start()
         {
+            var configuration = new Configuration();
+            var migrator = new DbMigrator(configuration);
+            migrator.Update();
+
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }
