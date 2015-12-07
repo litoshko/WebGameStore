@@ -40,7 +40,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommentService.cs" />
+    <Compile Include="EntityService.cs" />
+    <Compile Include="GameGenreService.cs" />
+    <Compile Include="GamePlatformTypeService.cs" />
+    <Compile Include="GameService.cs" />
+    <Compile Include="GenreService.cs" />
+    <Compile Include="ICommentService.cs" />
+    <Compile Include="IEntityService.cs" />
+    <Compile Include="IGameGenreService.cs" />
+    <Compile Include="IGamePlatformTypeService.cs" />
+    <Compile Include="IGameService.cs" />
+    <Compile Include="IGenreService.cs" />
+    <Compile Include="IPlatformTypeService.cs" />
+    <Compile Include="IService.cs" />
+    <Compile Include="PlatformTypeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebGameStore.DAL\WebGameStore.DAL.csproj">
+      <Project>{16766b62-2e6e-48e8-8650-364cf9cd94d3}</Project>
+      <Name>WebGameStore.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebGameStore.Model\WebGameStore.Model.csproj">
+      <Project>{3260fc21-2166-4a76-b58f-4f0f4d01c227}</Project>
+      <Name>WebGameStore.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
