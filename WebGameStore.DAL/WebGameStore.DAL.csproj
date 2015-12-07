@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GenericRepository.cs" />
+    <Compile Include="IGenericRepository.cs" />
+    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Migrations\201512071535055_InitialCreate.cs" />
     <Compile Include="Migrations\201512071535055_InitialCreate.Designer.cs">
       <DependentUpon>201512071535055_InitialCreate.cs</DependentUpon>
