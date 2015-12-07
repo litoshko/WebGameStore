@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace WebGameStore.Model
 {
@@ -15,7 +16,9 @@ namespace WebGameStore.Model
 
         public string ParentName { get; set; }
 
+        [JsonIgnore]
         public virtual Genre Parent { get; set; }
+        [JsonIgnore]
         [ForeignKey("ParentName")]
         public virtual IEnumerable<Genre> SubGenres { get; set; }
     }

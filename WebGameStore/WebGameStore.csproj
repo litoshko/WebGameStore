@@ -94,6 +94,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
+    <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -110,13 +112,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebGameStore.DAL\WebGameStore.DAL.csproj">
       <Project>{16766b62-2e6e-48e8-8650-364cf9cd94d3}</Project>
       <Name>WebGameStore.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebGameStore.Model\WebGameStore.Model.csproj">
+      <Project>{3260fc21-2166-4a76-b58f-4f0f4d01c227}</Project>
+      <Name>WebGameStore.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace WebGameStore.Model
 {
@@ -12,7 +13,9 @@ namespace WebGameStore.Model
         public string GameKey { get; set; }
         public string PlatformTypeType { get; set; }
 
+        [JsonIgnore]
         public virtual PlatformType PlatformType { get; set; }
+        [JsonIgnore]
         public virtual Game Game { get; set; }
     }
 }

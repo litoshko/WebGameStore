@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace WebGameStore.Model
 {
@@ -16,8 +17,11 @@ namespace WebGameStore.Model
         public string GameKey { get; set; }
         public int? ParentCommentId { get; set; }
 
+        [JsonIgnore]
         public virtual Game Game { get; set; }
+        [JsonIgnore]
         public virtual Comment ParentComment { get; set; }
+        [JsonIgnore]
         [ForeignKey("ParentCommentId")]
         public virtual IEnumerable<Comment> ChildComments { get; set; }
     }
