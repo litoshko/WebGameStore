@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebGameStore.Model
 {
-    class GamePlatformType
+    public class GamePlatformType
     {
     }
 }
