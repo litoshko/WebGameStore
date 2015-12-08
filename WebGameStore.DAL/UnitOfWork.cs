@@ -23,7 +23,6 @@ namespace WebGameStore.DAL
         /// <param name="context">The object context</param>
         public UnitOfWork(DbContext context)
         {
-
             _dbContext = context;
         }
 
