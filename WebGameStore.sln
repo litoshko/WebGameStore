@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebGameStore", "WebGameStore\WebGameStore.csproj", "{15678048-17C7-42D8-BE59-1702A2941EF1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{16766B62-2E6E-48E8-8650-364CF9CD94D3} = {16766B62-2E6E-48E8-8650-364CF9CD94D3}
+		{7B99ABBD-72F9-462B-ADF6-91970FF24CA5} = {7B99ABBD-72F9-462B-ADF6-91970FF24CA5}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebGameStore.DAL", "WebGameStore.DAL\WebGameStore.DAL.csproj", "{16766B62-2E6E-48E8-8650-364CF9CD94D3}"
 EndProject
