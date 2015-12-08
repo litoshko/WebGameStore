@@ -10,8 +10,8 @@ namespace WebGameStore.DAL
     public interface IGenericRepository<T> where T : class
     {
 
-        IEnumerable<T> GetAll();
-        IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate);
+        IQueryable<T> GetAll();
+        IQueryable<T> FindBy(Expression<Func<T, bool>> predicate);
         T Add(T entity);
         T Delete(T entity);
         void Edit(T entity);

@@ -9,12 +9,19 @@ namespace WebGameStore.BL
     {
         IUnitOfWork _unitOfWork;
         IGameRepository _gameRepository;
+        private IGameGenreRepository _gameGenreRepository;
+        private IGamePlatformTypeRepository _gamePlatformTypeRepository;
 
-        public GameService(IUnitOfWork unitOfWork, IGameRepository gameRepository)
+        public GameService(IUnitOfWork unitOfWork, 
+                           IGameRepository gameRepository, 
+                           IGameGenreRepository gameGenreRepository,
+                           IGamePlatformTypeRepository gamePlatformTypeRepository)
             : base(unitOfWork, gameRepository)
         {
             _unitOfWork = unitOfWork;
             _gameRepository = gameRepository;
+            _gameGenreRepository = gameGenreRepository;
+            _gamePlatformTypeRepository = gamePlatformTypeRepository;
         }
 
         public Game GetById(string id)
@@ -25,13 +32,15 @@ namespace WebGameStore.BL
         public IEnumerable<Game> GetByGenre(string name)
         {
             // TODO: Fix errors, which are caused by the statement below
-            return _gameRepository.FindBy(g => g.GameGenres.Any(gg => gg.GenreName == name));
+            var ggg = _gameGenreRepository.GetAll().Where(gg => gg.Genre.Name == name);
+            return _gameRepository.FindBy(g => ggg.Any(gg => g.Key == gg.GameKey));
         }
 
         public IEnumerable<Game> GetByPlatform(string name)
         {
             // TODO: Fix errors, which are caused by the statement below
-            return _gameRepository.FindBy(g => g.GamePlatformTypes.Any(gg => gg.PlatformTypeType == name));
+            var ggg = _gamePlatformTypeRepository.GetAll().Where(gg => gg.PlatformType.Type == name);
+            return _gameRepository.FindBy(g => ggg.Any(gg => g.Key == gg.GameKey));
         }
     }
 }

@@ -19,16 +19,16 @@ namespace WebGameStore.DAL
             _dbset = context.Set<T>();
         }
 
-        public virtual IEnumerable<T> GetAll()
+        public virtual IQueryable<T> GetAll()
         {
 
-            return _dbset.AsEnumerable<T>();
+            return _dbset.AsQueryable<T>();
         }
 
-        public IEnumerable<T> FindBy(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
+        public IQueryable<T> FindBy(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
         {
 
-            IEnumerable<T> query = _dbset.Where(predicate).AsEnumerable();
+            IQueryable<T> query = _dbset.Where(predicate).AsQueryable();
             return query;
         }
 

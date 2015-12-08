@@ -18,6 +18,10 @@ namespace WebGameStore
             migrator.Update();
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+
+
+            //GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }
 }

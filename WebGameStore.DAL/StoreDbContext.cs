@@ -23,12 +23,12 @@ namespace WebGameStore.DAL
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
         // public virtual DbSet<MyEntity> MyEntities { get; set; }
-        public DbSet<Game> Games { get; set; }
-        public DbSet<Comment> Comments { get; set; }
-        public DbSet<Genre> Genres { get; set; }
-        public DbSet<PlatformType> PlatformTypes { get; set; }
-        public DbSet<GameGenre> GameGenres { get; set; }
-        public DbSet<GamePlatformType> GamePlatformTypes { get; set; }
+        public virtual DbSet<Game> Games { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<Genre> Genres { get; set; }
+        public virtual DbSet<PlatformType> PlatformTypes { get; set; }
+        public virtual DbSet<GameGenre> GameGenres { get; set; }
+        public virtual DbSet<GamePlatformType> GamePlatformTypes { get; set; }
     }
 
     //public class MyEntity
