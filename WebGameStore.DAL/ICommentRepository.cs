@@ -9,5 +9,7 @@ namespace WebGameStore.DAL
 {
     public interface ICommentRepository : IGenericRepository<Comment>
     {
+        IEnumerable<Comment> GetCommentsForGame(string id);
+        Comment GetById(int id);
     }
 }

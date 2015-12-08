@@ -15,5 +15,10 @@ namespace WebGameStore.DAL
         {
 
         }
+
+        public Game GetById(string id)
+        {
+            return _dbset.FirstOrDefault(x => x.Key == id);
+        }
     }
 }

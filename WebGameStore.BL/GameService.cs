@@ -14,5 +14,10 @@ namespace WebGameStore.BL
             _unitOfWork = unitOfWork;
             _gameRepository = gameRepository;
         }
+
+        public Game GetById(string id)
+        {
+            return _gameRepository.GetById(id);
+        }
     }
 }

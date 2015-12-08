@@ -1,4 +1,5 @@
-﻿using WebGameStore.DAL;
+﻿using System.Collections.Generic;
+using WebGameStore.DAL;
 using WebGameStore.Model;
 
 namespace WebGameStore.BL
@@ -13,6 +14,17 @@ namespace WebGameStore.BL
         {
             _unitOfWork = unitOfWork;
             _commentRepository = commentRepository;
+        }
+
+
+        public IEnumerable<Comment> GetCommentsForGame(string id)
+        {
+            return _commentRepository.GetCommentsForGame(id);
+        }
+
+        public Comment GetById(int id)
+        {
+            return _commentRepository.GetById(id);
         }
     }
 }

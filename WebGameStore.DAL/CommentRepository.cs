@@ -15,5 +15,15 @@ namespace WebGameStore.DAL
         {
 
         }
+
+        public IEnumerable<Comment> GetCommentsForGame(string id)
+        {
+            return _dbset.Where(c => c.GameKey == id);
+        }
+
+        public Comment GetById(int id)
+        {
+            return _dbset.FirstOrDefault(c => c.Id == id);
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace WebGameStore.DAL
 {
     public interface IGameRepository : IGenericRepository<Game>
     {
+        Game GetById(string id);
     }
 }
