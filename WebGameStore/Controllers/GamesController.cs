@@ -81,12 +81,12 @@ namespace WebGameStore.Controllers
         }
 
         // POST: games/remove/5
-        [Route("games/remove/{id}")]
+        [Route("games/remove")]
         [HttpPost]
         [ResponseType(typeof(Game))]
-        public IHttpActionResult DeleteGame(string id)
+        public IHttpActionResult DeleteGame(Game gameFromPost)
         {
-            Game game = _gameService.GetById(id);
+            Game game = _gameService.GetById(gameFromPost.Key);
             if (game == null)
             {
                 return NotFound();
