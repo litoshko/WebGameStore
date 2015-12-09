@@ -10,16 +10,20 @@ using System.Web.Http.Filters;
 using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Description;
+using log4net;
 using Newtonsoft.Json;
 using WebApi.OutputCache.V2;
 using WebGameStore.BL;
 using WebGameStore.DAL;
+using WebGameStore.Filters;
 using WebGameStore.Model;
 
 namespace WebGameStore.Controllers
 {
     public class GamesController : ApiController
     {
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         IGameService _gameService;
 
         public GamesController(IGameService gameService)
@@ -33,6 +37,7 @@ namespace WebGameStore.Controllers
         [HttpGet]
         public IEnumerable<Game> GetGames()
         {
+            Log.Debug("GET all games request traced");
             return _gameService.GetAll();
         }
 
@@ -43,9 +48,11 @@ namespace WebGameStore.Controllers
         [ResponseType(typeof(Game))]
         public IHttpActionResult GetGame(string id)
         {
+            Log.Debug($"GET games by id = {id} request traced");
             Game game = _gameService.GetById(id);
             if (game == null)
             {
+                Log.Error($"GET games by id = {id} game not found");
                 return NotFound();
             }
 
@@ -58,8 +65,10 @@ namespace WebGameStore.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutGame([FromBody]Game game)
         {
+            Log.Debug("POST update game request traced");
             if (!ModelState.IsValid)
             {
+                Log.Error("POST update model is not valid");
                 return BadRequest(ModelState);
             }
 
@@ -74,8 +83,10 @@ namespace WebGameStore.Controllers
         [ResponseType(typeof(Game))]
         public IHttpActionResult PostGame([FromBody]Game game)
         {
+            Log.Debug("POST create game request traced");
             if (!ModelState.IsValid)
             {
+                Log.Error("POST create model is not valid");
                 return BadRequest(ModelState);
             }
 
@@ -90,9 +101,11 @@ namespace WebGameStore.Controllers
         [ResponseType(typeof(Game))]
         public IHttpActionResult DeleteGame(Game gameFromPost)
         {
+            Log.Debug("POST delete game request traced");
             Game game = _gameService.GetById(gameFromPost.Key);
             if (game == null)
             {
+                Log.Error($"POST delete: game not found");
                 return NotFound();
             }
 
@@ -107,6 +120,7 @@ namespace WebGameStore.Controllers
         [HttpGet]
         public IEnumerable<Game> GetGamesByGenre(string name)
         {
+            Log.Debug("GET game by genre request traced");
             return _gameService.GetByGenre(name);
         }
 
@@ -116,6 +130,7 @@ namespace WebGameStore.Controllers
         [HttpGet]
         public IEnumerable<Game> GetGamesByPlatform(string name)
         {
+            Log.Debug("GET game by platform request traced");
             return _gameService.GetByPlatform(name);
         }
 
@@ -124,9 +139,11 @@ namespace WebGameStore.Controllers
         [HttpGet]
         public HttpResponseMessage DownloadGame(string id)
         {
+            Log.Debug("Download game request traced");
             Game game = _gameService.GetById(id);
             if (game == null)
             {
+                Log.Error("Download game: game not found");
                 return Request.CreateResponse(HttpStatusCode.NotFound, "Invalid ID");
             }
 

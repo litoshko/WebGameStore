@@ -8,9 +8,11 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using log4net;
 using WebApi.OutputCache.V2;
 using WebGameStore.BL;
 using WebGameStore.DAL;
+using WebGameStore.Filters;
 using WebGameStore.Model;
 
 namespace WebGameStore.Controllers
@@ -18,6 +20,8 @@ namespace WebGameStore.Controllers
     public class CommentsController : ApiController
     {
         ////private StoreDbContext db = new StoreDbContext();
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         ICommentService _commentService;
         IGameService _gameService;
 
@@ -35,6 +39,7 @@ namespace WebGameStore.Controllers
         [HttpGet]
         public IEnumerable<Comment> GetCommentsForGame(string id)
         {
+            Log.Debug("GET all comments for game Request traced");
             var comments = _commentService.GetCommentsForGame(id);
             return comments;
         }
@@ -46,14 +51,17 @@ namespace WebGameStore.Controllers
         [ResponseType(typeof(Comment))]
         public IHttpActionResult AddCommentForGame(string id, [FromBody]Comment comment)
         {
+            Log.Debug("POST add comment for game request traced");
             if (!ModelState.IsValid)
             {
+                Log.Error("POST add comment for game: Model is not valid");
                 return BadRequest(ModelState);
             }
 
             Game game = _gameService.GetById(id);
             if (game == null)
             {
+                Log.Error("POST add comment for game: game not found");
                 return NotFound();
             }
 
@@ -71,14 +79,17 @@ namespace WebGameStore.Controllers
         [ResponseType(typeof(Comment))]
         public IHttpActionResult AddCommentForComment(int id, [FromBody]Comment comment)
         {
+            Log.Debug("POST add comment for comment request traced");
             if (!ModelState.IsValid)
             {
+                Log.Error("POST add comment for comment: Model is not valid");
                 return BadRequest(ModelState);
             }
 
             Comment baseComment = _commentService.GetById(id);
             if (baseComment == null)
             {
+                Log.Error("POST add comment for comment: comment not found");
                 return NotFound();
             }
 
@@ -94,9 +105,11 @@ namespace WebGameStore.Controllers
         [ResponseType(typeof(Comment))]
         public IHttpActionResult GetComment(int id)
         {
+            Log.Debug("GET comment by id request traced");
             Comment comment = _commentService.GetById(id);
             if (comment == null)
             {
+                Log.Error("GET comment: comment not found");
                 return NotFound();
             }
 
