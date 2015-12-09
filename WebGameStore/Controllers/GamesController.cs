@@ -6,8 +6,10 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Newtonsoft.Json;
 using WebGameStore.BL;
 using WebGameStore.DAL;
 using WebGameStore.Model;
@@ -109,6 +111,29 @@ namespace WebGameStore.Controllers
         public IEnumerable<Game> GetGamesByPlatform(string name)
         {
             return _gameService.GetByPlatform(name);
+        }
+
+        // GET: games/byPlatform/Action
+        [Route("games/{id}/download")]
+        [HttpGet]
+        public HttpResponseMessage DownloadGame(string id)
+        {
+            Game game = _gameService.GetById(id);
+            if (game == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, "Invalid ID");
+            }
+
+            HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
+            result.Content = new StringContent(JsonConvert.SerializeObject(game));
+            result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+            result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+            {
+                FileName = $"game_{id}.json"
+            };
+            result.StatusCode = HttpStatusCode.OK;
+
+            return result;
         }
     }
 }

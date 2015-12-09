@@ -31,14 +31,12 @@ namespace WebGameStore.BL
 
         public IEnumerable<Game> GetByGenre(string name)
         {
-            // TODO: Fix errors, which are caused by the statement below
             var ggg = _gameGenreRepository.GetAll().Where(gg => gg.Genre.Name == name);
             return _gameRepository.FindBy(g => ggg.Any(gg => g.Key == gg.GameKey));
         }
 
         public IEnumerable<Game> GetByPlatform(string name)
         {
-            // TODO: Fix errors, which are caused by the statement below
             var ggg = _gamePlatformTypeRepository.GetAll().Where(gg => gg.PlatformType.Type == name);
             return _gameRepository.FindBy(g => ggg.Any(gg => g.Key == gg.GameKey));
         }
