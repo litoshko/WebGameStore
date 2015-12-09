@@ -6,10 +6,12 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web.Http.Filters;
 using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Newtonsoft.Json;
+using WebApi.OutputCache.V2;
 using WebGameStore.BL;
 using WebGameStore.DAL;
 using WebGameStore.Model;
@@ -26,6 +28,7 @@ namespace WebGameStore.Controllers
         }
 
         // GET: games
+        [CacheOutput(ClientTimeSpan = 60, ServerTimeSpan = 60)]
         [Route("games")]
         [HttpGet]
         public IEnumerable<Game> GetGames()
@@ -34,6 +37,7 @@ namespace WebGameStore.Controllers
         }
 
         // GET: games/5
+        [CacheOutput(ClientTimeSpan = 60, ServerTimeSpan = 60)]
         [Route("games/{id}", Name = "GetGame")]
         [HttpGet]
         [ResponseType(typeof(Game))]
@@ -98,6 +102,7 @@ namespace WebGameStore.Controllers
         }
 
         // GET: games/byGenre/Action
+        [CacheOutput(ClientTimeSpan = 60, ServerTimeSpan = 60)]
         [Route("games/bygenre/{name}")]
         [HttpGet]
         public IEnumerable<Game> GetGamesByGenre(string name)
@@ -106,6 +111,7 @@ namespace WebGameStore.Controllers
         }
 
         // GET: games/byPlatform/Action
+        [CacheOutput(ClientTimeSpan = 60, ServerTimeSpan = 60)]
         [Route("games/byPlatform/{name}")]
         [HttpGet]
         public IEnumerable<Game> GetGamesByPlatform(string name)
