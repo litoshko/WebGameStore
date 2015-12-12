@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using WebGameStore.Filters;
 
 namespace WebGameStore
 {
@@ -10,6 +11,8 @@ namespace WebGameStore
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            log4net.Config.XmlConfigurator.Configure();
+
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -21,6 +24,8 @@ namespace WebGameStore
             );
 
             config.Formatters.Remove(config.Formatters.XmlFormatter);
+            config.Filters.Add(new LogIPAttribute());
+            config.Filters.Add(new PerformanceAttribute());
         }
     }
 }

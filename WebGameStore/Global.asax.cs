@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Routing;
 using WebGameStore.DAL.Migrations;
 
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 namespace WebGameStore
 {
     public class WebApiApplication : System.Web.HttpApplication
