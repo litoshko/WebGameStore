@@ -63,8 +63,9 @@
     <Compile Include="ControllersTests\CommentControllerTests.cs" />
     <Compile Include="ControllersTests\GameControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoutesTests\CommentsRouteTests.cs" />
     <Compile Include="RoutesTests\RouteTester.cs" />
-    <Compile Include="RoutesTests\RouteTests.cs" />
+    <Compile Include="RoutesTests\GamesRouteTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
