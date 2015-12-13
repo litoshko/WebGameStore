@@ -66,6 +66,9 @@
     <Compile Include="RoutesTests\CommentsRouteTests.cs" />
     <Compile Include="RoutesTests\RouteTester.cs" />
     <Compile Include="RoutesTests\GamesRouteTests.cs" />
+    <Compile Include="ServicesTests\EntityServiceTests.cs" />
+    <Compile Include="ServicesTests\CommentServiceTests.cs" />
+    <Compile Include="ServicesTests\GameServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -89,6 +92,7 @@
       <Name>WebGameStore</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Net;
+﻿using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Http;
 using System.Web.Http.Results;
 using Moq;
 using NUnit.Framework;
@@ -14,7 +7,7 @@ using WebGameStore.BL;
 using WebGameStore.Controllers;
 using WebGameStore.Model;
 
-namespace WebGameStore.Tests
+namespace WebGameStore.Tests.ControllersTests
 {
     [TestFixture]
     class GameControllerTests

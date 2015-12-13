@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Http.Results;
+﻿using System.Web.Http.Results;
 using Moq;
 using NUnit.Framework;
 using WebGameStore.BL;
 using WebGameStore.Controllers;
 using WebGameStore.Model;
 
-namespace WebGameStore.Tests
+namespace WebGameStore.Tests.ControllersTests
 {
     [TestFixture]
     class CommentControllerTests
