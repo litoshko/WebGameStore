@@ -69,7 +69,7 @@ namespace WebGameStore.Controllers
 
             _commentService.Create(comment);
 
-            return CreatedAtRoute("DefaultApi", new { id = comment.Id }, comment);
+            return CreatedAtRoute("GetComment", new { id = comment.Id }, comment);
         }
 
         // GET: comment/1/newcomment
@@ -97,11 +97,12 @@ namespace WebGameStore.Controllers
 
             _commentService.Create(comment);
 
-            return CreatedAtRoute("DefaultApi", new { id = comment.Id }, comment);
+            return CreatedAtRoute("GetComment", new { id = comment.Id }, comment);
         }
         
         // GET: api/Comments/5
         [CacheOutput(ClientTimeSpan = 60, ServerTimeSpan = 60)]
+        [Route("comment/{id}", Name = "GetComment")]
         [ResponseType(typeof(Comment))]
         public IHttpActionResult GetComment(int id)
         {
