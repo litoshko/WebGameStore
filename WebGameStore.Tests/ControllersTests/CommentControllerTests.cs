@@ -33,7 +33,7 @@ namespace WebGameStore.Tests.ControllersTests
             _controller.GetCommentsForGame(id);
 
             // Assert
-            _mockCommentService.Verify(m => m.GetCommentsForGame(id), Times.Once);
+            _mockCommentService.Verify(m => m.GetCommentsForGame(It.IsAny<string>()), Times.Once);
         }
 
         [Test]
@@ -42,7 +42,7 @@ namespace WebGameStore.Tests.ControllersTests
             // Arrange
             var id = "1";
             var comment = new Comment {Name = "Author", Body = "Some body"};
-            _mockGameService.Setup(m => m.GetById(id)).Returns(new Game());
+            _mockGameService.Setup(m => m.GetById(It.IsAny<string>())).Returns(new Game());
 
             // Act
             _controller.AddCommentForGame(id, comment);
@@ -57,7 +57,7 @@ namespace WebGameStore.Tests.ControllersTests
             // Arrange
             var id = "1";
             var comment = new Comment { Name = "Author", Body = "Some body" };
-            _mockGameService.Setup(m => m.GetById(id)).Returns((Game)null);
+            _mockGameService.Setup(m => m.GetById(It.IsAny<string>())).Returns((Game)null);
 
             // Act
             var result = _controller.AddCommentForGame(id, comment);
@@ -72,7 +72,7 @@ namespace WebGameStore.Tests.ControllersTests
             // Arrange
             var id = 1;
             var comment = new Comment { Name = "Author", Body = "Some body" };
-            _mockCommentService.Setup(m => m.GetById(id)).Returns(new Comment());
+            _mockCommentService.Setup(m => m.GetById(It.IsAny<int>())).Returns(new Comment());
 
             // Act
             _controller.AddCommentForComment(id, comment);
@@ -87,7 +87,7 @@ namespace WebGameStore.Tests.ControllersTests
             // Arrange
             var id = 1;
             var comment = new Comment { Name = "Author", Body = "Some body" };
-            _mockCommentService.Setup(m => m.GetById(id)).Returns((Comment)null);
+            _mockCommentService.Setup(m => m.GetById(It.IsAny<int>())).Returns((Comment)null);
 
             // Act
             var result = _controller.AddCommentForComment(id, comment);
@@ -102,7 +102,7 @@ namespace WebGameStore.Tests.ControllersTests
             // Arrange
             var id = 1;
             var comment = new Comment { Name = "Author", Body = "Some body" };
-            _mockCommentService.Setup(m => m.GetById(id)).Returns(new Comment());
+            _mockCommentService.Setup(m => m.GetById(It.IsAny<int>())).Returns(new Comment());
 
             // Act
             var result = _controller.GetComment(id);
@@ -117,7 +117,7 @@ namespace WebGameStore.Tests.ControllersTests
             // Arrange
             var id = 1;
             var comment = new Comment { Name = "Author", Body = "Some body" };
-            _mockCommentService.Setup(m => m.GetById(id)).Returns((Comment)null);
+            _mockCommentService.Setup(m => m.GetById(It.IsAny<int>())).Returns((Comment)null);
 
             // Act
             var result = _controller.GetComment(id);
