@@ -41,7 +41,7 @@ namespace WebGameStore.Tests.ServicesTests
         {
             //Arrange
             var id = "1";
-            _commentRepository.Setup(x => x.GetCommentsForGame(id)).Returns(_listComment.AsEnumerable());
+            _commentRepository.Setup(x => x.GetCommentsForGame(It.IsAny<string>())).Returns(_listComment.AsEnumerable());
 
             //Act
             var result = _commentService.GetCommentsForGame(id);
@@ -57,7 +57,7 @@ namespace WebGameStore.Tests.ServicesTests
         {
             //Arrange
             var id = 1;
-            _commentRepository.Setup(x => x.GetById(id)).Returns(_listComment[0]);
+            _commentRepository.Setup(x => x.GetById(It.IsAny<int>())).Returns(_listComment[0]);
 
             //Act
             Comment result = _commentService.GetById(id);

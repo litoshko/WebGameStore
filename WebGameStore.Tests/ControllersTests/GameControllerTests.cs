@@ -37,7 +37,7 @@ namespace WebGameStore.Tests.ControllersTests
         {
             // Arrange
             var id = "6";
-            _mockView.Setup(m => m.GetById(id)).Returns((Game)null);
+            _mockView.Setup(m => m.GetById(It.IsAny<string>())).Returns((Game)null);
 
             // Act
             var result = _controller.GetGame(id);
@@ -53,7 +53,7 @@ namespace WebGameStore.Tests.ControllersTests
             // Arrange
             var id = "6";
             var game = new Game {Key = id, Name = "Test Name"};
-            _mockView.Setup(m => m.GetById(id)).Returns(game);
+            _mockView.Setup(m => m.GetById(It.IsAny<string>())).Returns(game);
 
             // Act
             var result = _controller.GetGame(id);
@@ -97,7 +97,7 @@ namespace WebGameStore.Tests.ControllersTests
             // Arrange
             var id = "6";
             var game = new Game { Key = id, Name = "Test Name" };
-            _mockView.Setup(m => m.GetById(id)).Returns(game);
+            _mockView.Setup(m => m.GetById(It.IsAny<string>())).Returns(game);
 
             // Act
             var result = _controller.DeleteGame(game);
@@ -112,7 +112,7 @@ namespace WebGameStore.Tests.ControllersTests
             // Arrange
             var id = "6";
             var game = new Game { Key = id, Name = "Test Name" };
-            _mockView.Setup(m => m.GetById(id)).Returns(game);
+            _mockView.Setup(m => m.GetById(It.IsAny<string>())).Returns(game);
 
             // Act
             var result = _controller.DeleteGame(game);
@@ -127,7 +127,7 @@ namespace WebGameStore.Tests.ControllersTests
             // Arrange
             var id = "6";
             var game = new Game { Key = id, Name = "Test Name" };
-            _mockView.Setup(m => m.GetById(id)).Returns((Game) null);
+            _mockView.Setup(m => m.GetById(It.IsAny<string>())).Returns((Game) null);
 
             // Act
             var result = _controller.DeleteGame(game);
@@ -141,7 +141,7 @@ namespace WebGameStore.Tests.ControllersTests
         {
             // Arrange
             var name = "6";
-            _mockView.Setup(m => m.GetByGenre(name)).Returns((IEnumerable<Game>)null);
+            _mockView.Setup(m => m.GetByGenre(It.IsAny<string>())).Returns((IEnumerable<Game>)null);
 
             // Act
             var result = _controller.GetGamesByGenre(name);
@@ -155,7 +155,7 @@ namespace WebGameStore.Tests.ControllersTests
         {
             // Arrange
             var name = "6";
-            _mockView.Setup(m => m.GetByPlatform(name)).Returns((IEnumerable<Game>)null);
+            _mockView.Setup(m => m.GetByPlatform(It.IsAny<string>())).Returns((IEnumerable<Game>)null);
 
             // Act
             var result = _controller.GetGamesByPlatform(name);
@@ -172,7 +172,7 @@ namespace WebGameStore.Tests.ControllersTests
             // Arrange
             var id = "6";
             var game = new Game { Key = id, Name = "Test Name" };
-            _mockView.Setup(m => m.GetById(id)).Returns(game);
+            _mockView.Setup(m => m.GetById(It.IsAny<string>())).Returns(game);
 
             // Act
             var result = _controller.DownloadGame(id);
